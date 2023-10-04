@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Ecommerce</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+  <link rel="stylesheet" href="assets/css/vendor/flaticon/flaticon.css">
+  <link rel="stylesheet" href="assets/css/vendor/slick.css">
+  <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+  <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
+  <link rel="stylesheet" href="assets/css/vendor/sal.css">
+  <link rel="stylesheet" href="assets/css/vendor/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/vendor/base.css">
+  <link rel="stylesheet" href="assets/css/style.min.css">
+</head>
+
+<body>
+  <app-root></app-root>
+
+  <div id="notification-ecommerce-danger" class="notification-ecommerce px-2 mx-3">
+    <!-- ERROR -->
+    <svg style="fill:blueviolet;" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+      class="bi bi-emoji-frown" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+      <path
+        d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+    </svg>
+
+    <p class="text-message-notification m-0 py-2">SE AGREGO EL PRODUCTO CORRECTAMENTE</p>
+    <span class="btn-secondary">2</span>
+    <button id="close" class="notification__close">
+      <svg viewBox="0 0 352 512" width="100" title="times">
+        <path
+          d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="notification-ecommerce-warning" class="notification-ecommerce px-2 mx-3">
+    <!-- WARNIGN -->
+    <svg style="fill:blueviolet;" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+      class="bi bi-emoji-dizzy" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+      <path
+        d="M9.146 5.146a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708.708l-.647.646.647.646a.5.5 0 0 1-.708.708l-.646-.647-.646.647a.5.5 0 1 1-.708-.708l.647-.646-.647-.646a.5.5 0 0 1 0-.708zm-5 0a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 1 1 .708.708l-.647.646.647.646a.5.5 0 1 1-.708.708L5.5 7.207l-.646.647a.5.5 0 1 1-.708-.708l.647-.646-.647-.646a.5.5 0 0 1 0-.708zM10 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
+    </svg>
+
+    <p class="text-message-notification m-0 py-2">SE AGREGO EL PRODUCTO CORRECTAMENTE</p>
+    <span class="btn-secondary">2</span>
+    <button id="close" class="notification__close">
+      <svg viewBox="0 0 352 512" width="100" title="times">
+        <path
+          d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="notification-ecommerce-success" class="notification-ecommerce px-2 mx-3">
+    <!-- SUCCESS -->
+    <svg style="fill:blueviolet;" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+      class="bi bi-emoji-laughing" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+      <path
+        d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z" />
+    </svg>
+
+    <p class="text-message-notification m-0 py-2">SE AGREGO EL PRODUCTO CORRECTAMENTE</p>
+    <span class="btn-secondary">2</span>
+    <button id="close" class="notification__close">
+      <svg viewBox="0 0 352 512" width="100" title="times">
+        <path
+          d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- JS
+============================================ -->
+  <!-- Modernizer JS -->
+  <script src="assets/js/vendor/modernizr.min.js"></script>
+  <!-- jQuery JS -->
+  <script src="assets/js/vendor/jquery.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="assets/js/vendor/popper.min.js"></script>
+  <script src="assets/js/vendor/bootstrap.min.js"></script>
+  <script src="assets/js/vendor/slick.min.js"></script>
+  <script src="assets/js/vendor/js.cookie.js"></script>
+  <!-- <script src="assets/js/vendor/jquery.style.switcher.js"></script> -->
+  <script src="assets/js/vendor/jquery-ui.min.js"></script>
+  <script src="assets/js/vendor/jquery.countdown.min.js"></script>
+  <script src="assets/js/vendor/sal.js"></script>
+  <script src="assets/js/vendor/jquery.magnific-popup.min.js"></script>
+  <script src="assets/js/vendor/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/js/vendor/isotope.pkgd.min.js"></script>
+  <script src="assets/js/vendor/counterup.js"></script>
+  <script src="assets/js/vendor/waypoints.min.js"></script>
+
+  <!-- Main JS -->
+  <script src="assets/js/main.js"></script>
+  <!-- SCRIPT PAYPAL -->
+  <script
+    src="https://www.paypal.com/sdk/js?client-id=ASXPD_WqyG8BN3kfJceFMppYsIizhLZNAVqVxBAos7ytT2I28ULOPfsUogYXw9-fiflrePT-6j1x6HPR&vault=true"></script>
+</body>
+
+</html>

@@ -1,0 +1,483 @@
+<main class="main-wrapper" *ngIf="product_selected">
+    <!-- Start Shop Area  -->
+    <div class="axil-single-product-area bg-color-white">
+        <div class="single-product-thumb axil-section-gap pb--20 pb_sm--0 bg-vista-white">
+            <div class="container">
+                <div class="row row--50">
+                    <div class="col-lg-6 mb--40">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div
+                                    class="product-large-thumbnail-2 single-product-thumbnail axil-product slick-layout-wrapper--15 axil-slick-arrow arrow-both-side-3">
+                                    <ng-container *ngFor="let galeria of product_selected.galerias">
+
+                                        <div class="thumbnail">
+                                            <img [src]="galeria.imagen" alt="Product Images">
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div
+                                    class="small-thumb-wrapper product-small-thumb-2 small-thumb-style-two small-thumb-style-three">
+                                    <ng-container *ngFor="let galeria of product_selected.galerias">
+                                        <div class="small-thumb-img ">
+                                            <img style="width: 50px;height: 50px;object-fit: cover;"
+                                                [src]="galeria.imagen" alt="samll-thumb">
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb--40">
+                        <div class="single-product-content">
+                            <div class="inner">
+                                <h2 class="product-title">{{product_selected.title}}
+                                </h2>
+                                <ng-container *ngIf="getDiscount()>0">
+                                    <br>
+                                    <small>DESCUENTO POR: <b>{{SALE_FLASH.type_campeign == 1 ? 'CAMPAÑA DE DESCUENTO' :
+                                            'VENTA FLASH'}}</b></small>
+                                    <br>
+                                    Precio Anterior: <del>{{product_selected.price_usd}} USD</del>
+                                </ng-container>
+                                <span class="price-amount" *ngIf="getDiscount()>0"></span>
+                                <span class="price-amount">{{product_selected.price_usd - getDiscount()}} USD</span>
+                                <div class="product-rating">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star" [ngClass]="{'start-del':AVG_REVIEW<1}"></i>
+                                        <i class="fas fa-star" [ngClass]="{'start-del':AVG_REVIEW<2}"></i>
+                                        <i class="fas fa-star" [ngClass]="{'start-del':AVG_REVIEW<3}"></i>
+                                        <i class="fas fa-star" [ngClass]="{'start-del':AVG_REVIEW<4}"></i>
+                                        <i class="fas fa-star" [ngClass]="{'start-del':AVG_REVIEW<5}"></i>
+                                    </div>
+                                    <div class="review-link">
+                                        <a href="#">(<span>{{COUNT_REVIEW}}</span> reseñas de clientes)</a>
+                                    </div>
+                                </div>
+                                <ul class="product-meta">
+                                    <li><i class="fal fa-check"></i>In stock</li>
+                                    <li><i class="fal fa-check"></i>Free delivery available</li>
+                                    <li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>
+                                </ul>
+                                <p class="description">{{product_selected.resumen}}</p>
+
+                                <div class="product-variations-wrapper">
+
+                                    <!-- Start Product Variation  -->
+                                    <!-- <div class="product-variation">
+                                        <h6 class="title">Colors:</h6>
+                                        <div class="color-variant-wrapper">
+                                            <ul class="color-variant mt--0">
+                                                <li class="color-extra-01 active"><span><span
+                                                            class="color"></span></span>
+                                                </li>
+                                                <li class="color-extra-02"><span><span class="color"></span></span>
+                                                </li>
+                                                <li class="color-extra-03"><span><span class="color"></span></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div> -->
+                                    <!-- End Product Variation  -->
+
+                                    <!-- Start Product Variation  -->
+                                    <div class="product-variation product-size-variation"
+                                        *ngIf="product_selected.type_inventario==2">
+                                        <h6 class="title">Tipos:</h6>
+                                        <ul class="range-variant">
+                                            <ng-container *ngFor="let variedad of product_selected.variedades">
+                                                <li (click)="selectedVariedad(variedad)">{{variedad.valor}}</li>
+
+                                            </ng-container>
+                                        </ul>
+                                    </div>
+                                    <!-- End Product Variation  -->
+
+                                </div>
+
+                                <!-- Start Product Action Wrapper  -->
+                                <div class="product-action-wrapper d-flex-center landing-product">
+                                    <!-- Start Quentity Action  -->
+                                    <div class="pro-qty mr--20"><input type="text" id="qty-cart" value="1"></div>
+                                    <!-- End Quentity Action  -->
+
+                                    <!-- Start Product Action  -->
+                                    <ul class="product-action d-flex-center mb--0">
+                                        <li class="add-to-cart"><a href="#" onclick="return false;"
+                                                (click)="addCart(product_selected)" class="axil-btn btn-bg-primary">Add
+                                                to Cart</a></li>
+                                        <li class="wishlist"><a href="wishlist.html" class="axil-btn wishlist-btn"><i
+                                                    class="far fa-heart"></i></a></li>
+                                    </ul>
+                                    <!-- End Product Action  -->
+
+                                </div>
+                                <!-- End Product Action Wrapper  -->
+
+
+                                <!-- End .product-desc-wrapper -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="pro-des-features">
+                                    <li class="single-features">
+                                        <div class="icon">
+                                            <img src="assets/images/product/product-thumb/icon-3.png" alt="icon">
+                                        </div>
+                                        Easy Returns
+                                    </li>
+                                    <li class="single-features">
+                                        <div class="icon">
+                                            <img src="assets/images/product/product-thumb/icon-2.png" alt="icon">
+                                        </div>
+                                        Quality Service
+                                    </li>
+                                    <li class="single-features">
+                                        <div class="icon">
+                                            <img src="assets/images/product/product-thumb/icon-1.png" alt="icon">
+                                        </div>
+                                        Original Product
+                                    </li>
+                                </ul>
+                                <!-- End .pro-des-features -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 mb--40">
+                        <div class="woocommerce-tabs wc-tabs-wrapper bg-vista-white">
+                            <div class="container">
+
+                                <!-- End .product-desc-wrapper -->
+                                <div class="additional-info pb--40 pb_sm--20">
+                                    <h4 class="mb--60">Additional Information</h4>
+                                    <div class="product-additional-info" [innerHtml]="product_selected.description">
+
+                                    </div>
+                                    <!-- End .product-additional-info -->
+                                </div>
+
+                                <div class="reviews-wrapper">
+                                    <h4 class="mb--60">Reviews</h4>
+                                    <div class="row">
+                                        <div class="col-lg-6 mb--40">
+                                            <div class="axil-comment-area pro-desc-commnet-area">
+                                                <h5 class="title">01 Review for this product</h5>
+                                                <ul class="comment-list">
+                                                    <ng-container *ngFor="let REVIEW of REVIEWS">
+                                                        <!-- Start Single Comment  -->
+                                                        <li class="comment">
+                                                            <div class="comment-body">
+                                                                <div class="single-comment">
+                                                                    <div class="comment-img">
+                                                                        <img src="./assets/images/blog/author-image-4.png"
+                                                                            alt="Author Images">
+                                                                    </div>
+                                                                    <div class="comment-inner">
+                                                                        <h6 class="commenter">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span
+                                                                                        data-text="Cameron Williamson">{{REVIEW.user.name
+                                                                                        + " "+
+                                                                                        REVIEW.user.surname}}</span>
+                                                                                </span>
+                                                                            </a>
+                                                                            <span
+                                                                            
+                                                                                class="commenter-rating ratiing-four-star">
+                                                                                <a href="#"><i
+                                                                                        class="fas fa-star"  [ngClass]="{'start-del':REVIEW.cantidad<1}"></i></a>
+                                                                                <a href="#"><i
+                                                                                        class="fas fa-star"  [ngClass]="{'start-del':REVIEW.cantidad<2}"></i></a>
+                                                                                <a href="#"><i
+                                                                                        class="fas fa-star"  [ngClass]="{'start-del':REVIEW.cantidad<3}"></i></a>
+                                                                                <a href="#"><i
+                                                                                        class="fas fa-star"  [ngClass]="{'start-del':REVIEW.cantidad<4}"></i></a>
+                                                                                <a href="#"><i
+                                                                                        class="fas fa-star"  [ngClass]="{'start-del':REVIEW.cantidad<5}"></i></a>
+                                                                            </span>
+                                                                        </h6>
+                                                                        <div class="comment-text">
+                                                                            <p>{{REVIEW.description}}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <!-- End Single Comment  -->
+                                                    </ng-container>
+
+                                                </ul>
+                                            </div>
+                                            <!-- End .axil-commnet-area -->
+                                        </div>
+                                        <!-- End .col -->
+                                        <div class="col-lg-6 mb--40">
+                                            <!-- Start Comment Respond  -->
+                                            <div class="comment-respond pro-des-commend-respond mt--0">
+                                                <h5 class="title mb--30">Add a Review</h5>
+                                                <p>Your email address will not be published. Required fields are
+                                                    marked *</p>
+                                                <div class="rating-wrapper d-flex-center mb--40">
+                                                    Your Rating <span class="require">*</span>
+                                                    <div class="reating-inner ml--20">
+                                                        <a href="#"><i class="fal fa-star"></i></a>
+                                                        <a href="#"><i class="fal fa-star"></i></a>
+                                                        <a href="#"><i class="fal fa-star"></i></a>
+                                                        <a href="#"><i class="fal fa-star"></i></a>
+                                                        <a href="#"><i class="fal fa-star"></i></a>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <!-- End Comment Respond  -->
+                                        </div>
+                                        <!-- End .col -->
+                                    </div>
+                                </div>
+                                <!-- End .reviews-wrapper -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End .single-product-thumb -->
+
+    </div>
+    <!-- End Shop Area  -->
+
+    <!-- Start Recently Viewed Product Area  -->
+    <div class="axil-product-area bg-color-white axil-section-gap pb--50 pb_sm--30">
+        <div class="container">
+            <div class="section-title-wrapper">
+                <span class="title-highlighter highlighter-primary"><i class="far fa-shopping-basket"></i> Your
+                    Recently</span>
+                <h2 class="title">Related Products</h2>
+            </div>
+            <div class="recent-product-activation slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide">
+                <ng-container *ngFor="let product of related_products">
+                    <div class="slick-single-layout">
+                        <div class="axil-product">
+                            <div class="thumbnail">
+                                <a [href]="'/landing-producto/'+product.slug">
+                                    <img style="width: 250px; height: 250px; object-fit: cover;" [src]="product.imagen"
+                                        alt="Product Images">
+                                </a>
+                                <!-- <div class="label-block label-right">
+                                    <div class="product-badget">20% OFF</div>
+                                </div> -->
+                                <div class="product-hover-action">
+                                    <ul class="cart-action">
+                                        <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a>
+                                        </li>
+                                        <li class="select-option"><a href="cart.html">Add to Cart</a></li>
+                                        <li class="quickview"><a href="#" data-bs-toggle="modal"
+                                                data-bs-target="#quick-view-modal" (click)="openModal(product)"><i
+                                                    class="far fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <div class="inner">
+                                    <h5 class="title"><a
+                                            [href]="'/landing-producto/'+product.slug">{{product.title}}</a></h5>
+                                    <div class="product-price-variant">
+                                        <!-- <span class="price old-price">$30</span> -->
+                                        <span class="price current-price">{{product.price_usd}} USD</span>
+                                    </div>
+                                    <!-- <div class="color-variant-wrapper">
+                                        <ul class="color-variant">
+                                            <li class="color-extra-01 active"><span><span class="color"></span></span>
+                                            </li>
+                                            <li class="color-extra-02"><span><span class="color"></span></span>
+                                            </li>
+                                            <li class="color-extra-03"><span><span class="color"></span></span>
+                                            </li>
+                                        </ul>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </ng-container>
+
+
+                <!-- End .slick-single-layout -->
+
+            </div>
+        </div>
+    </div>
+    <!-- End Recently Viewed Product Area  -->
+    <!-- Start Axil Newsletter Area  -->
+    <div class="axil-newsletter-area axil-section-gap pt--0">
+        <div class="container">
+            <div class="etrade-newsletter-wrapper bg_image bg_image--5">
+                <div class="newsletter-content">
+                    <span class="title-highlighter highlighter-primary2"><i
+                            class="fas fa-envelope-open"></i>Newsletter</span>
+                    <h2 class="title mb--40 mb_sm--30">Get weekly update</h2>
+                    <div class="input-group newsletter-form">
+                        <div class="position-relative newsletter-inner mb--15">
+                            <input placeholder="example@gmail.com" type="text">
+                        </div>
+                        <button type="submit" class="axil-btn mb--15">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End .container -->
+    </div>
+    <!-- End Axil Newsletter Area  -->
+</main>
+
+<div class="modal fade quick-view-product" id="quick-view-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                        class="far fa-times"></i></button>
+            </div>
+            <div class="modal-body" *ngIf="product_selected_modal">
+                <div class="single-product-thumb">
+                    <div class="row">
+                        <div class="col-lg-7 mb--40">
+                            <div class="row">
+                                <div class="col-lg-10 order-lg-2">
+                                    <div
+                                        class="single-product-thumbnail product-large-thumbnail axil-product thumbnail-badge zoom-gallery">
+
+                                        <ng-container *ngFor="let galeria of product_selected_modal.galerias">
+                                            <div class="thumbnail">
+                                                <img [src]="galeria.imagen" alt="Product Images">
+
+                                                <ng-container *ngIf="product_selected_modal.FlashSale">
+                                                    <div class="label-block label-right"
+                                                        *ngIf="product_selected_modal.FlashSale.type_discount == 1">
+                                                        <div class="product-badget">
+                                                            {{product_selected_modal.FlashSale.discount}}% OFF</div>
+                                                    </div>
+                                                    <div class="label-block label-right"
+                                                        *ngIf="product_selected_modal.FlashSale.type_discount == 2">
+                                                        <div class="product-badget">
+                                                            {{product_selected_modal.FlashSale.discount}} USD OFF</div>
+                                                    </div>
+                                                </ng-container>
+
+                                                <div class="product-quick-view position-view">
+                                                    <a [href]="galeria.imagen" class="popup-zoom">
+                                                        <i class="far fa-search-plus"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                        </ng-container>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 order-lg-1">
+                                    <div class="product-small-thumb small-thumb-wrapper">
+                                        <ng-container *ngFor="let galeria of product_selected_modal.galerias">
+                                            <div class="small-thumb-img">
+                                                <img [src]="galeria.imagen" alt="thumb image">
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 mb--40">
+                            <div class="single-product-content">
+                                <div class="inner">
+                                    <div class="product-rating">
+                                        <div class="star-rating">
+                                            <img [src]="product_selected_modal.imagen" alt="Rate Images">
+                                        </div>
+                                        <div class="review-link">
+                                            <a href="#">(<span>1</span> customer reviews)</a>
+                                        </div>
+                                    </div>
+                                    <h3 class="product-title">{{product_selected_modal.title}}</h3>
+                                    <span class="price-amount"
+                                        *ngIf="!product_selected_modal.FlashSale">{{product_selected_modal.price_usd}}
+                                        USD</span>
+                                    <span class="price-amount"
+                                        *ngIf="product_selected_modal.FlashSale"><del>{{product_selected_modal.price_usd}}
+                                            USD</del></span>
+                                    <span class="price-amount"
+                                        *ngIf="product_selected_modal.FlashSale">{{getCalNewPrice(product_selected_modal)}}
+                                        USD</span>
+                                    <ul class="product-meta">
+                                        <li><i class="fal fa-check"></i>In stock</li>
+                                        <li><i class="fal fa-check"></i>Free delivery available</li>
+                                        <li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>
+                                    </ul>
+                                    <p class="description">{{product_selected_modal.resumen}}</p>
+
+                                    <div class="product-variations-wrapper">
+
+                                        <!-- Start Product Variation  -->
+                                        <!-- <div class="product-variation">
+                                            <h6 class="title">Colors:</h6>
+                                            <div class="color-variant-wrapper">
+                                                <ul class="color-variant mt--0">
+                                                    <li class="color-extra-01 active"><span><span
+                                                                class="color"></span></span>
+                                                    </li>
+                                                    <li class="color-extra-02"><span><span class="color"></span></span>
+                                                    </li>
+                                                    <li class="color-extra-03"><span><span class="color"></span></span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div> -->
+                                        <!-- End Product Variation  -->
+
+                                        <!-- Start Product Variation  -->
+                                        <div class="product-variation"
+                                            *ngIf="product_selected_modal.type_inventario == 2">
+                                            <h6 class="title">Tamaños:</h6>
+                                            <ul class="range-variant">
+
+                                                <ng-container
+                                                    *ngFor="let variedad of product_selected_modal.variedades">
+                                                    <li>{{variedad.valor}}</li>
+                                                </ng-container>
+
+                                            </ul>
+                                        </div>
+                                        <!-- End Product Variation  -->
+
+                                    </div>
+
+                                    <!-- Start Product Action Wrapper  -->
+                                    <div class="product-action-wrapper d-flex-center modal-product">
+                                        <!-- Start Quentity Action  -->
+                                        <div class="pro-qty"><input type="text" value="1"></div>
+                                        <!-- End Quentity Action  -->
+
+                                        <!-- Start Product Action  -->
+                                        <ul class="product-action d-flex-center mb--0">
+                                            <li class="add-to-cart"><a href="cart.html"
+                                                    class="axil-btn btn-bg-primary">Add to Cart</a></li>
+                                            <li class="wishlist"><a href="wishlist.html"
+                                                    class="axil-btn wishlist-btn"><i class="far fa-heart"></i></a></li>
+                                        </ul>
+                                        <!-- End Product Action  -->
+
+                                    </div>
+                                    <!-- End Product Action Wrapper  -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
